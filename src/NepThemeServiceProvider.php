@@ -13,7 +13,12 @@ class NepThemeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $configPath = __DIR__.'/../config/theme.php';
+
+        // Publish config.
+        $this->publishes([
+            $configPath => config_path('theme.php')
+        ]);
     }
 
     /**

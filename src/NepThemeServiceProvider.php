@@ -29,7 +29,7 @@ class NepThemeServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('neptheme.themes', function () {
-            return new \App\Themes();
+            return new Themes();
         });
     }
 }

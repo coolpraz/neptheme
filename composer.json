@@ -1,0 +1,26 @@
+{
+    "name": "coolpraz/neptheme",
+    "description": "Multi theme and theme switcher package for Laravel.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["laravel", "themes", "plugins"],
+    "authors": [
+        {
+            "name": "Prabhat Shahi",
+            "email": "pra_shahi@hotmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "illuminate/support": "^5.4",
+        "illuminate/view": "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Coolpraz\\NepTheme\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    }
+}

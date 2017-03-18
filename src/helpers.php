@@ -4,13 +4,6 @@ use App\Themes;
 
 if ( ! function_exists('np_theme'))
 {
-    /**
-     * Get the theme instance.
-     *
-     * @param  string  $themeName
-     * @param  string  $layoutName
-     * @return \Teepluss\Theme\Theme
-     */
     function np_theme($view = null, $data = [], $mergeData = [])
     {
         $theme = app('neptheme.themes');
@@ -20,5 +13,19 @@ if ( ! function_exists('np_theme'))
         }
 
         return $theme->render($view, $data, $mergeData);
+    }
+}
+
+if ( ! function_exists('np_assets'))
+{
+    function np_assets($assets, $path = null)
+    {
+        $theme = app('neptheme.themes');
+
+        if ($path) {
+            $theme->setAssetsPath($path)->assets($assets);
+        }
+
+        return $theme->assets($assets);
     }
 }

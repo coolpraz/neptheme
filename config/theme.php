@@ -23,25 +23,7 @@ return [
 	*/
 
 	'themePath' => base_path('opt/themes'),
-
-	/*
-	|--------------------------------------------------------------------------
-	| A pieces of theme collections
-	|--------------------------------------------------------------------------
-	|
-	| Inside a theme path we need to set up directories to
-	| keep "layouts", "assets" and "partials".
-	|
-	*/
-
-	'containerDir' => [
-		'layout' 	=> 'layouts',
-		'asset'		=> 'assets',
-		'partial' 	=> 'partials',
-		'widget' 	=> 'widgets',
-		'view' 		=> 'views'
-	],
-
+	
 	/*
 	|--------------------------------------------------------------------------
 	| Namespaces

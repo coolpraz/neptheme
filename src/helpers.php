@@ -1,7 +1,5 @@
 <?php
 
-use App\Themes;
-
 if ( ! function_exists('np_theme'))
 {
     function np_theme($view = null, $data = [], $mergeData = [])
@@ -23,7 +21,7 @@ if ( ! function_exists('np_assets'))
         $theme = app('neptheme.themes');
 
         if ($path) {
-            $theme->setAssetsPath($path)->assets($assets);
+            return $theme->setAssetsPath($path)->assets($assets);
         }
 
         return $theme->assets($assets);

@@ -2,6 +2,8 @@
 
 namespace Coolpraz\NepTheme\Facades;
 
+use Illuminate\Support\Facades\Facade;
+
 class Theme extends Facade
 {
 	/**

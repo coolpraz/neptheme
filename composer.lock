@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a3fc74f91a6d236e933ec9bc6539346",
+    "content-hash": "e518805c15230ae34bb300916f9dad83",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -975,6 +975,55 @@
             "time": "2017-03-17 13:55:48"
         },
         {
+            "name": "symfony/filesystem",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/filesystem.git",
+                "reference": "1eec5c503048de52741f8c2f243abbfc9f289b0f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/1eec5c503048de52741f8c2f243abbfc9f289b0f",
+                "reference": "1eec5c503048de52741f8c2f243abbfc9f289b0f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Filesystem\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Filesystem Component",
+            "homepage": "https://symfony.com",
+            "time": "2017-03-07 16:28:52"
+        },
+        {
             "name": "symfony/finder",
             "version": "dev-master",
             "source": {
@@ -1725,7 +1774,7 @@
             ],
             "description": "Virtual file system to mock the real file system in unit tests.",
             "homepage": "http://vfs.bovigo.org/",
-            "time": "2017-02-07T20:34:28+00:00"
+            "time": "2017-02-07 20:34:28"
         },
         {
             "name": "myclabs/deep-copy",
@@ -3054,6 +3103,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "symfony/filesystem": 20,
         "mikey179/vfsstream": 20
     },
     "prefer-stable": false,

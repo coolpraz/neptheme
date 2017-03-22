@@ -9,6 +9,7 @@ class Theme
 	protected $themesPath;
 	protected $themesDefault;
 	protected $assetsPath;
+	protected $publicPath;
 	private $beforeDefaultThemeCallback;
 	private $beforeDefaultPathCallback;
 
@@ -17,12 +18,25 @@ class Theme
 		$this->themesPath = config('theme.themePath');
 		$this->themesDefault = config('theme.themeDefault');
 		$this->assetsPath = "$this->themesPath/$this->themesDefault/assets";
+
+		$this->publicPath = public_path("np_theme/$this->themesDefault/assets");
+
+		$this->publicAsstesExists();
 	}
 
 	public function exists($theme)
 	{
 		$path = $this->themesPath . '/' . $theme . '/views/';
 		return is_dir($path);
+	}
+
+	public function publicAsstesExists()
+	{
+		$fs = new \Symfony\Component\Filesystem\Filesystem();
+
+		if (! $fs->exists($this->publicPath)) {
+            $fs->symlink($this->assetsPath, $this->publicPath);
+        }
 	}
 
 	public function render($view = null, $data = [], $mergeData = [])
@@ -54,6 +68,11 @@ class Theme
 		return $this;
 	}
 
+	public function getAssetsPath()
+	{
+		return $this->assetsPath;
+	}
+
 	public function setAssetsPath($path = null)
 	{
 		if (! $path) {
@@ -62,23 +81,25 @@ class Theme
 
 		$this->assetsPath = "$this->themesPath/$this->themesDefault/$path";
 
+		$this->publicAsstesExists();
+
 		return $this;
 	}
 
-	public function getAssetsPath()
+	public function getAssetsPublicPath()
 	{
-		return $this->assetsPath;
+		return $this->publicPath;
 	}
 
-	public function assets($assets = null)
+	public function assets($assets)
 	{
 		$assetPath = ltrim($assets, '/');
 		// return default assets path if argument is null
 		if (! $assets) {
-			return $this->getAssetsPath();
+			return $this->getAssetsPublicPath();
 		}
 		// return custom assets path provided in argument
-		return $this->getAssetsPath() . "/$assetPath";
+		return $this->getAssetsPublicPath() . "/$assetPath";
 	}
 
 	public function url($path = null)

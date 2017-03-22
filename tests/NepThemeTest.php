@@ -29,7 +29,7 @@ class NepThemeTest extends TestCase
 	protected function getPackageAliases($app)
 	{
 		return [
-			'ThemeFacade' => Coolpraz\NepTheme\Facades\Theme::class
+			'ThemeFacade' => \Coolpraz\NepTheme\Facades\Theme::class
 		];
 	}
 
@@ -56,6 +56,11 @@ class NepThemeTest extends TestCase
 					],
 					'index.blade.php' => 'This is index page'
 				]
+			],
+			'public' => [
+				'np_theme' => [
+					'default' => []
+				]
 			]
 		];
 
@@ -68,13 +73,13 @@ class NepThemeTest extends TestCase
 	{
 		$app['config']->set('theme.themeDefault', 'default');
 		$app['config']->set('theme.themePath', vfsStream::url('theme'));
+		$app['path.public'] = vfsStream::url('public');
 	}
 
 	/** @test */
 	function test_theme()
 	{
-		// dd(vfsStream::inspect(new vfsStreamStructureVisitor())->getStructure());
-		// dd(config('themes.themePath'));
+		dd(vfsStream::inspect(new vfsStreamStructureVisitor())->getStructure());
 	    $this->assertInstanceOf(Theme::class, $this->theme);
 	}
 
@@ -201,5 +206,13 @@ class NepThemeTest extends TestCase
 	    $this->assertEquals($assetsContent, $this->theme->assets('/css/main.css'));
 	    // without directory seperator at begining
 	    $this->assertEquals($assetsContent, $this->theme->assets('css/main.css'));
+	}
+
+	/** @test */
+	function test_package_facade()
+	{
+		$this->assertInstanceOf(\Coolpraz\NepTheme\Facades\Theme::class, app()->make('ThemeFacade'));
+        
+        $this->assertEquals($this->theme->get(), ThemeFacade::get());
 	}
 }

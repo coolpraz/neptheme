@@ -10,11 +10,10 @@
             "email": "pra_shahi@hotmail.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "illuminate/support": "^5.4",
         "illuminate/view": "^5.4",
-        "symfony/filesystem": "^3.3@dev"
+        "symfony/filesystem": "^3.2"
     },
     "autoload": {
         "psr-4": {
